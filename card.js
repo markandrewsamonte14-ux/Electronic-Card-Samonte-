@@ -1,23 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const envelope = document.getElementById("envelope") || document.querySelector(".envelope");
-  const hint = document.getElementById("hint") || document.querySelector(".hint");
-  const heartsContainer = document.getElementById("heartsContainer") || document.querySelector(".hearts-container");
-  if (!envelope) return;
+  const envelope = document.getElementById("envelope");
+  const hint = document.getElementById("hint");
+  const heartsContainer = document.getElementById("heartsContainer");
+
   function openLetter() {
     if (envelope.classList.contains("open")) return;
     envelope.classList.add("open");
-    if (hint) hint.textContent = "Tap again or swipe down to close 💌";
+    hint.textContent = "Tap again or swipe down to close 💌";
     spawnHearts();
   }
+
   function closeLetter() {
     envelope.classList.remove("open");
-    if (hint) hint.textContent = "Tap the envelope to open 💌";
-    if (heartsContainer) heartsContainer.innerHTML = "";
+    hint.textContent = "Tap the envelope to open 💌";
+    heartsContainer.innerHTML = "";
   }
+
   function spawnHearts() {
-    if (!heartsContainer) return;
     const hearts = ["❤️", "💖", "💕", "💗", "💓", "💘"];
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 18; i++) {
       setTimeout(() => {
         const heart = document.createElement("span");
         heart.className = "flying-heart";
@@ -30,25 +31,39 @@ document.addEventListener("DOMContentLoaded", () => {
       }, i * 80);
     }
   }
+
   envelope.addEventListener("click", () => {
-    if (envelope.classList.contains("open")) closeLetter();
-    else openLetter();
+    if (envelope.classList.contains("open")) {
+      closeLetter();
+    } else {
+      openLetter();
+    }
   });
+
   let startY = 0;
-  envelope.addEventListener("touchstart", (e) => { startY = e.touches[0].clientY; });
+  envelope.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+  });
+
   envelope.addEventListener("touchend", (e) => {
     let diff = startY - e.changedTouches[0].clientY;
-    if (diff > 50) openLetter();
-    if (diff < -50) closeLetter();
+    if (diff > 50) {
+      openLetter();
+    }
+    if (diff < -50) {
+      closeLetter();
+    }
   });
+
+  // ========== DITO KA LANG MAG-EDIT, WAG NA SA HTML ==========
   const recipient = document.getElementById("recipient");
   const lineOne = document.getElementById("lineOne");
   const lineTwo = document.getElementById("lineTwo");
   const lineThree = document.getElementById("lineThree");
   const signature = document.getElementById("signature");
-  if (recipient) recipient.textContent = "My Wifey";
-  if (lineOne) lineOne.textContent = "Dear baby, I loveyou so much";
-  if (lineTwo) lineTwo.textContent = "Please swm";
-  if (lineThree) lineThree.textContent = "I'll be gentle.";
+  if (recipient) recipient.textContent = "Ma'am Roan";
+  if (lineOne) lineOne.textContent = "Dear ma'am, thank you for all the lessons";
+  if (lineTwo) lineTwo.textContent = "That you have teach us";
+  if (lineThree) lineThree.textContent = "I have learned a lot.";
   if (signature) signature.textContent = "From: Samonte, Mark Andrew B.";
 });
