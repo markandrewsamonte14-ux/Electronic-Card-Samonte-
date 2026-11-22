@@ -46,9 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const lineTwo = document.getElementById("lineTwo");
   const lineThree = document.getElementById("lineThree");
   const signature = document.getElementById("signature");
-  if (recipient) recipient.textContent = "Ma'am Roan";
-  if (lineOne) lineOne.textContent = "Dear ma'am, thank you for all the lessons";
-  if (lineTwo) lineTwo.textContent = "That you have teach us";
-  if (lineThree) lineThree.textContent = "I have learned a lot.";
+  if (recipient) recipient.textContent = "My Wifey";
+  if (lineOne) lineOne.textContent = "Dear baby, I loveyou so much";
+  if (lineTwo) lineTwo.textContent = "Please swm";
+  if (lineThree) lineThree.textContent = "I'll be gentle.";
   if (signature) signature.textContent = "From: Samonte, Mark Andrew B.";
 });
